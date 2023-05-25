@@ -233,6 +233,7 @@ class CollapsableCards extends HTMLElement {
         border: none;
         margin: 0;
         display: flex;
+		padding: 0;
         justify-content: space-between;
         align-items: center;
         width: 100%;
@@ -274,8 +275,13 @@ class CollapsableCards extends HTMLElement {
         color: var(--paper-item-icon-color, #aaa);
       }
 
+	  .card-list-${this.id}.is-toggled > * {
+		margin: 10px 0px;
+	  }
+
       .type-custom-collapsable-cards {
         background: transparent;
+		box-shadow: none;
       }
     `;
 	}

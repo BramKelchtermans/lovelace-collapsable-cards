@@ -242,7 +242,6 @@ class CollapsableCards extends HTMLElement {
       }
       .toggle-button-${this.id}:focus {
         outline: none;
-        background-color: var(--divider-color);
       }
 
       .card-list-${this.id} {

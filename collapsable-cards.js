@@ -114,7 +114,7 @@ class CollapsableCards extends HTMLElement {
 
 		const icon = document.createElement('ha-icon');
 		icon.className = 'toggle-button__icon-' + this.id
-		icon.setAttribute('icon', 'mdi:chevron-down')
+		icon.setAttribute('icon', this.isToggled ? 'mdi:chevron-up' : 'mdi:chevron-down')
 		this.icon = icon
 		toggleButton.appendChild(icon)
 

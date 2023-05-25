@@ -16,8 +16,9 @@ class CollapsableCards extends HTMLElement {
 		}
 
 		let isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
-		if (config.defaultOpen == true) {
-			this.isToggled = true;
+		this.isToggled = true;
+		if (config.defaultOpen == false) {
+			this.isToggled = false;
 		} else if (config.defaultOpen == 'desktop-only' && !isMobile) {
 			this.isToggled = true;
 		} else {
@@ -104,7 +105,7 @@ class CollapsableCards extends HTMLElement {
 		if (this._titleCard) {
 			toggleButton.append(this._titleCard);
 		} else {
-			toggleButton.innerHTML = this._config.title || 'Toggle';
+			toggleButton.innerHTML = this.renderTitle(this._config.title) || 'Toggle';
 		}
 		toggleButton.className = 'card-content toggle-button-' + this.id
 		toggleButton.addEventListener('click', () => {
@@ -119,6 +120,17 @@ class CollapsableCards extends HTMLElement {
 		toggleButton.appendChild(icon)
 
 		return toggleButton
+	}
+
+	renderTitle(title) {
+		return `
+		<ha-card id="card" class="button-card-main disabled type-custom-button-card" style="background-color: rgba(0, 0, 0, 0); box-shadow: none; height: auto; width: auto; margin-top: 6px; margin-left: 18px; margin-bottom: 0px; padding: 6px;">
+			<div id="container" class="vertical no-icon no-state no-label" style="grid-template: &quot;n&quot; min-content &quot;l&quot; min-content / 1fr;">
+				<div id="name" class="ellipsis" style="justify-self: start; font-weight: bold; font-size: 1.5rem;">
+				  ${title}
+				</div>  
+		</div><mwc-ripple id="ripple"></mwc-ripple>
+		</ha-card>`
 	}
 
 	styleCard(isToggled) {

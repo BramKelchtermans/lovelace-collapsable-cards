@@ -16,13 +16,12 @@ class CollapsableCards extends HTMLElement {
 		}
 
 		let isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
-		this.isToggled = true;
 		if (config.defaultOpen == false) {
 			this.isToggled = false;
 		} else if (config.defaultOpen == 'desktop-only' && !isMobile) {
 			this.isToggled = true;
 		} else {
-			this.isToggled = false;
+			this.isToggled = true;
 		}
 
 		this._config = config;

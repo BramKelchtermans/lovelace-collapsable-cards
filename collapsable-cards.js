@@ -16,6 +16,7 @@ class CollapsableCards extends HTMLElement {
 		}
 
 		let isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
+		console.log("Got config open:", config.defaultOpen);
 		if (config.defaultOpen == false) {
 			this.isToggled = false;
 		} else if (config.defaultOpen == 'desktop-only' && !isMobile) {
@@ -23,6 +24,7 @@ class CollapsableCards extends HTMLElement {
 		} else {
 			this.isToggled = true;
 		}
+		console.log("Calculated toggle: ", this.isToggled);
 
 		this._config = config;
 		this._refCards = [];
